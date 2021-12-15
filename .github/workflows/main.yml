@@ -45,7 +45,7 @@ jobs:
     # check out
       - name: install dependencies
         if: steps.cache_dependencies.outputs.cache-hit == ''
-      - run: |
+        run: |
           cd server
           npm install
           pwd
