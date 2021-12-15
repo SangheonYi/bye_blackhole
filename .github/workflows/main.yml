@@ -9,17 +9,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    # check init
       - run: pwd
       - run: ls
+
+    # check out
       - uses: actions/checkout@v2
       - run: pwd
       - run: ls
+
+    # set node
       - uses: actions/setup-node@v2
         with:
           node-version: '14'
       - run: npm --version
       - run: pwd
       - run: ls
+
+    # set cache
       - uses: actions/cache@v2
         with:
           path: ~/.npm
@@ -28,6 +35,8 @@ jobs:
             ${{ runner.os }}-node-
       - run: pwd
       - run: ls
+
+    # check out
       - name: install dependencies
         if: steps.cache_dependencies.outputs.cache-hit == ''
         run: npm install
