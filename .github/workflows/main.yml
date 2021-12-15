@@ -33,13 +33,14 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
+    # is server?
+      - run: cd server
       - run: pwd
       - run: ls
 
     # check out
       - name: install dependencies
         if: steps.cache_dependencies.outputs.cache-hit == ''
-        run: cd server
-        run: npm install
-        run: pwd
-        run: ls
+      - run: npm install
+      - run: pwd
+      - run: ls
