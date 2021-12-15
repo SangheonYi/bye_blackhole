@@ -33,7 +33,7 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
-        run: cd server
+      - run: cd server
     # is server?
       - run: pwd
       - run: ls
