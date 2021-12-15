@@ -25,12 +25,15 @@ jobs:
         with:
           node-version: '14'
       - run: npm --version
+      - run: pwd
       - uses: actions/cache@v2
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
+      - run: pwd
       - name: install dependencies
         if: steps.cache_dependencies.outputs.cache-hit == ''
         run: npm install
+      - run: pwd
