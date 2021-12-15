@@ -3,7 +3,7 @@ import {
   testPostStatus,
   testPatchStatus,
 } from '../../test/test-util.spec';
-const url = 'http://localhost:8120/admin';
+const url = 'http://localhost:8080/admin';
 let user = {
   intra_id: 'sayi',
   nickname: 'sayinick',

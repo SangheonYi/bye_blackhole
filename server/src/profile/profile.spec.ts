@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { testPutStatus } from '../../test/test-util.spec';
 
-const host = 'http://localhost:8120';
+const host = 'http://localhost:8080';
 
 const ERROR = `nickname: anony is not exist`;
 
