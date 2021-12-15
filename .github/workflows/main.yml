@@ -26,6 +26,7 @@ jobs:
           node-version: '14'
       - run: npm --version
       - run: pwd
+      - run: ls
       - uses: actions/cache@v2
         with:
           path: ~/.npm
@@ -33,7 +34,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
       - run: pwd
+      - run: ls
       - name: install dependencies
         if: steps.cache_dependencies.outputs.cache-hit == ''
         run: npm install
       - run: pwd
+      - run: ls
