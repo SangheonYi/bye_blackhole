@@ -39,6 +39,7 @@ jobs:
 
     # is server?
       - run: |
+          cd server
           pwd
           ls
 
