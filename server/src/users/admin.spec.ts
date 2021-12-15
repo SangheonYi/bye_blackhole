@@ -1,9 +1,12 @@
 import axios from 'axios';
-import { testPostStatus, testPatchStatus } from '../../test/test-util.spec';
-const url = 'http://localhost:8080/admin';
+import {
+  testPostStatus,
+  testPatchStatus,
+} from '../../test/test-util.spec';
+const url = 'http://localhost:8120/admin';
 let user = {
   intra_id: 'sayi',
-  nickname: 'intra_dup',
+  nickname: 'sayinick',
   auth_token: 'sayi token',
   icon: 'gamer_keyboard',
 };

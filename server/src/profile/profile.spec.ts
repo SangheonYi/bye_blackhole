@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { testPutStatus } from '../../test/test-util.spec';
 
-const host = 'http://localhost:8080';
+const host = 'http://localhost:8120';
 
 const ERROR = `nickname: anony is not exist`;
 
@@ -28,39 +28,39 @@ let jinkim = {
 
 let match = [
   {
-    p1_id: 'sayi',
-    p2_id: 'taekim',
-    winner: 'sayi',
+    p1_id: 'sayinick',
+    p2_id: 'taekimnick',
+    winner: 'sayinick',
   },
   {
-    p1_id: 'sayi',
-    p2_id: 'taekim',
-    winner: 'sayi',
+    p1_id: 'sayinick',
+    p2_id: 'taekimnick',
+    winner: 'sayinick',
   },
   {
-    p1_id: 'sayi',
-    p2_id: 'taekim',
-    winner: 'sayi',
+    p1_id: 'sayinick',
+    p2_id: 'taekimnick',
+    winner: 'sayinick',
   },
   {
-    p1_id: 'sayi',
-    p2_id: 'taekim',
-    winner: 'taekim',
+    p1_id: 'sayinick',
+    p2_id: 'taekimnick',
+    winner: 'taekimnick',
   },
   {
-    p1_id: 'sayi',
-    p2_id: 'taekim',
-    winner: 'taekim',
+    p1_id: 'sayinick',
+    p2_id: 'taekimnick',
+    winner: 'taekimnick',
   },
   {
-    p1_id: 'sayi',
-    p2_id: 'taekim',
-    winner: 'taekim',
+    p1_id: 'sayinick',
+    p2_id: 'taekimnick',
+    winner: 'taekimnick',
   },
   {
-    p1_id: 'jinkim',
-    p2_id: 'taekim',
-    winner: 'jinkim',
+    p1_id: 'jinkimnick',
+    p2_id: 'taekimnick',
+    winner: 'jinkimnick',
   },
 ];
 
@@ -72,7 +72,12 @@ const initDB = async () => {
   await axios.post(`${host}/admin`, jinkim);
   for (let index = 0; index < match.length; index++) {
     const v = match[index];
-    await axios.post(`${host}/match-history`, v);
+    await axios.post(`${host}/match-history`, v)
+                .then((v) => v)
+                .catch((reason) => {
+                  console.log(reason.response.data);
+                  return reason.response;
+                });;
   }
 };
 const testAddFriend = async (
