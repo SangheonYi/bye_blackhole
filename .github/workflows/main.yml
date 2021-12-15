@@ -24,7 +24,6 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '14'
-      - run: npm install
       - run: npm --version
       - uses: actions/cache@v2
         with:
@@ -32,3 +31,6 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
+      - name: install dependencies
+        if: steps.cache_dependencies.outputs.cache-hit == ''
+        run: npm install
