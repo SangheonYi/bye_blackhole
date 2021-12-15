@@ -10,21 +10,24 @@ jobs:
 
     steps:
     # check init
-      - run: pwd
-      - run: ls
+      - run: |
+          pwd
+          ls
 
     # check out
       - uses: actions/checkout@v2
-      - run: pwd
-      - run: ls
+      - run: |
+          pwd
+          ls
 
     # set node
       - uses: actions/setup-node@v2
         with:
           node-version: '14'
       - run: npm --version
-      - run: pwd
-      - run: ls
+      - run: |
+          pwd
+          ls
 
     # set cache
       - uses: actions/cache@v2
@@ -33,14 +36,17 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
-      - run: cd server
+
     # is server?
-      - run: pwd
-      - run: ls
+      - run: |
+          pwd
+          ls
 
     # check out
       - name: install dependencies
         if: steps.cache_dependencies.outputs.cache-hit == ''
-        run: npm install
-      - run: pwd
-      - run: ls
+      - run: |
+          cd server
+          npm install
+          pwd
+          ls
